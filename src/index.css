@@ -55,6 +55,12 @@ h1 {
   position: relative;
 }
 
+.score-board { 
+  color: #f6e35a;;
+  align-items: center;
+  margin-left: 2rem;
+}
+
 #players {
   list-style: none;
   padding: 0;

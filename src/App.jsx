@@ -5,6 +5,7 @@ import GameBoard from './components/GameBoard';
 import Log from './components/Log';
 import GameOver from './components/GameOver';
 import { WINNING_COMBINATIONS } from './components/winning-combination';
+import ScoreBoard from './components/ScoreBoard';
 
 
 const PLAYERS = {
@@ -67,11 +68,14 @@ function deriveWinner(gameBoard, players) {
 function App() {
   const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
+  const [score, setScore] = useState('');
 
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns);
   const winner = deriveWinner(gameBoard, players);
   const hasDraw = gameTurns.length === 9 && !winner;
+
+  
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
@@ -86,8 +90,19 @@ function App() {
     });
   }
 
+  let score1 = 0;
+  let score2 = 0;
+
+  if(winner == players.X) {
+    score1 ++
+  }else if(winner == players.O) {
+    score2 ++
+  }
+
+
   function handleRestart() {
     setGameTurns([]);
+    setScore(score1++, score2++)
   }
 
   function handlePlayerNameChange(symbol, newName) {
@@ -98,10 +113,13 @@ function App() {
       };
     });
   }
-
+  
   return (
     <main>
       <div id="game-container">
+        <div>
+          <ScoreBoard player1={PLAYERS.X} player2={PLAYERS.O} score1={score1} score2={score2} />
+        </div>
         <ol id="players" className="highlight-player">
           <Player
             initialName={PLAYERS.X}
