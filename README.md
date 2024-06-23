@@ -8,7 +8,6 @@ Demo
 Installation
 Usage
 Contributing
-License
 
 
 Introduction:
@@ -52,7 +51,4 @@ Open your browser and navigate to http://localhost:3000 to play the game.
 
 Contributing:
 Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
-
-License:
-This project is licensed under the MIT License - see the LICENSE file for details.
 
